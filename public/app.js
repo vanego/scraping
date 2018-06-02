@@ -29,7 +29,7 @@ $.getJSON("/articles", function (data) {
 
 
 
-// Whenever someone clicks a p tag
+// Whenever someone clicks   the addNote button tag
 $(document).on("click", "#addNote", function (e) {
     // Prevent the button click from refreshing the page
     e.preventDefault();
@@ -154,5 +154,14 @@ $(document).on("click", "#viewNotes", function (e) {
         .then(function (data) {
             // location reload to refresh page and have notes button appear
             console.log(data);
-        });
-})
+            $("#notes").pull("<h2>" + thisTitle + "</h2>");
+            // An input to enter a new title
+            $("#notes").pull("<input id='titleinput' name='title' >");
+            // A textarea to add a new note body
+            $("#notes").pull("<textarea id='bodyinput' name='body'></textarea>");
+            // A button to submit a new note, with the id of the article saved to it
+            $("#notes").append("<button data-id='" + thisId + "' id='deleteNote'>Delete Note</button>");
+        })
+});
+
+
